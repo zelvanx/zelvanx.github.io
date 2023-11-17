@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Selva!</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden; /* Hide overflow to prevent scrolling */
+            background: linear-gradient(135deg, #f3d0ff, #a8fcff);
+        }
+
+        .title-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background-color: #b19cd9; /* Pastel Purple */
+            color: #fff;
+            text-align: center;
+            font-size: 20px;
+            overflow: hidden;
+            white-space: nowrap; /* Prevent title from wrapping */
+        }
+
+        .typewriter-text {
+            position: absolute;
+            top: 60px; /* Adjusted space under the title bar */
+            left: 30px; /* Adjusted space from the left */
+            font-size: 24px;
+            color: #333;
+            white-space: pre-wrap; /* Allow wrapping to the next line */
+            overflow: hidden;
+            animation: typing 3s steps(30) forwards; /* Adjust the duration and steps as needed */
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+        .dynamic-text {
+            display: inline-block;
+            white-space: nowrap;
+            animation: moveText 10s linear infinite;
+        }
+
+        @keyframes moveText {
+            0% {
+                transform: translateX(100%);
+            }
+
+            50% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #ffb6b9, #a6c1ee);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease;
+            transform-origin: center bottom;
+            overflow: hidden;
+            margin-top: 40px; /* Adjusted margin to make space for the static bar */
+        }
+
+        .container:hover {
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+            transform: scale(1.02);
+        }
+
+        h1 {
+            color: #fff;
+            margin-bottom: 20px;
+
+        p {
+            font-size: 24px;
+            margin-top: 20px;
+            color: #333;
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap">
+</head>
+
+<body>
+
+    <div class="title-bar">
+        <div class="dynamic-text">Happy Birthday Selva!</div>
+    </div>
+
+    <div class="typewriter-text" id="typedtext"></div>
+
+    <script>
+        // set up text to print, each item in array is a new line
+        var aText = new Array(
+            "There are only 10 types of people in the world:",
+            "Those who understand binary, and those who don't"
+        );
+        var iSpeed = 100; // time delay of print out
+        var iIndex = 0; // start printing array at this position
+        var iArrLength = aText[0].length; // the length of the text array
+        var iScrollAt = 20; // start scrolling up at this many lines
+
+        var iTextPos = 0; // initialize text position
+        var sContents = ''; // initialize contents variable
+        var iRow; // initialize current row
+
+ var aText = new Array(
+    "<TT>Happy Birthday Again, I just wanted to say that I really hope you enjoy your day, and I hope <br/>you enjoyed this website, presentation and the wallpapers. I think at this point you are tired<br/> of me saying this, maybe because I talk too much, or I say those things alot. But it's only because all I have is words to express those things believe me if I could make you see the way I see you, or make you understand how amazing you are as a person I would in a heartbeat.</TT>", 
+    
+);
+var iSpeed = 100; // time delay of print out
+var iIndex = 0; // start printing array at this position
+var iArrLength = aText[0].length; // the length of the text array
+var iScrollAt = 20; // start scrolling up at this many lines
+var iTextPos = 0; // initialize text position
+var sContents = ''; // initialize contents variable
+var iRow; // initialize current row
+
+function typewriter() {
+    sContents = ' ';
+    iRow = Math.max(0, iIndex - iScrollAt);
+    var destination = document.getElementById("typedtext");
+
+    while (iRow < iIndex) {
+        sContents += '<span style="margin-right:30px">' + aText[iRow++] + '</span>';
+    }
+    destination.innerHTML = sContents + '<span style="margin-right:30px">' + aText[iIndex].substring(0, iTextPos) + "_</span>";
+
+    if (iTextPos++ == iArrLength) {
+        iTextPos = 0;
+        iIndex++;
+        if (iIndex != aText.length) {
+            iArrLength = aText[iIndex].length;
+            sContents += '<br />'; // Add line break when moving to the next line
+            setTimeout(typewriter, 500);
+        }
+    } else {
+        setTimeout(typewriter, iSpeed);
+    }
+}
+
+typewriter();
+    </script>
+
+</body>
+
+</html>
